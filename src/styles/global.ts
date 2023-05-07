@@ -16,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
     background: ${({theme}) => theme.colors["gray-800"]};
     color: ${({theme}) => theme.colors["gray-100"]};
   }
+  body, input, textarea, button{
+    font: 400 1rem Roboto, sans-serif;
+  }  
 
   
 `;

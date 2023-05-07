@@ -17,6 +17,9 @@ export const defaultTheme = {
     "red-300": "#F75A68",
     "red-500": "#AB222E",
     "red-700": "#7A1921",
+
+    "income": "#00B37E",
+    "outcome": "#F75A68"
   },
   fonts: {
     "text-s": "0.875rem",
