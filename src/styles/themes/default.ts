@@ -19,7 +19,9 @@ export const defaultTheme = {
     "red-700": "#7A1921",
 
     "income": "#00B37E",
-    "outcome": "#F75A68"
+    "outcome": "#F75A68",
+    "income-500": "#00875F",
+    "outcome-500": "#AB222E",
   },
   fonts: {
     "text-s": "0.875rem",
