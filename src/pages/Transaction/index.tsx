@@ -32,16 +32,7 @@ function Transactions(){
               <td>Aluguel</td>
               <td>12/04/2023</td>
             </tr>
-            <tr>
-              <td>Hamburger</td>
-              <td>
-                <PriceHighlight variant="outcome">
-                  - R$ 30,00
-                </PriceHighlight>
-              </td>
-              <td>Alimentação</td>
-              <td>12/04/2023</td>
-            </tr>
+            
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
