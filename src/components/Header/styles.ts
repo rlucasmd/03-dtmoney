@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
-  background: ${({theme}) => theme["gray-900"]};
+  background: ${({theme}) => theme.colors["gray-900"]};
   padding: 2.5rem 0 7.5rem;
 `;
 
@@ -19,8 +19,8 @@ const HeaderContent = styled.div`
 const NewTransactionButton = styled.button`
   height: 50px;
   border: 0;
-  background: ${({theme}) => theme["green-500"]};
-  color: ${({theme}) => theme.white};
+  background: ${({theme}) => theme.colors["green-500"]};
+  color: ${({theme}) => theme.colors.white};
   font-weight: bold;
   padding: 0 1.25rem;
   border-radius: 6px;
@@ -29,7 +29,7 @@ const NewTransactionButton = styled.button`
   transition: 0.4s;
 
   &:hover{
-    background-color: ${({theme}) => theme["green-700"]};
+    background-color: ${({theme}) => theme.colors["green-700"]};
   }
 `;
 

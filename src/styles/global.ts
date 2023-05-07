@@ -8,13 +8,13 @@ const GlobalStyle = createGlobalStyle`
   }
   :focus{
     outline: none;
-    box-shadow: 0 0 0 2px ${({theme}) => theme["green-500"]};
+    box-shadow: 0 0 0 2px ${({theme}) => theme.colors["green-500"]};
   }
 
   body {
     -webkit-font-smoothing: antialiased;
-    background: ${({theme}) => theme["gray-800"]};
-    color: ${({theme}) => theme["gray-100"]};
+    background: ${({theme}) => theme.colors["gray-800"]};
+    color: ${({theme}) => theme.colors["gray-100"]};
   }
 
   
