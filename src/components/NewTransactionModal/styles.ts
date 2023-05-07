@@ -20,8 +20,6 @@ const ModalContent = styled(Dialog.Content)`
   left: 50%;
 
   transform: translate(-50%, -50%);
-
-
 `;
 
 const ModalTitle = styled(Dialog.Title)`
@@ -80,5 +78,42 @@ const ModalForm = styled.form`
     }
 `;
 
-export { ModalOverlay, ModalContent, ModalTitle, CloseButton, ModalForm };
+const TransactionTypeContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2 ,1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+`;
+
+type TransactionTypeButtonProps = {
+  variant: "income" | "outcome";
+}
+
+const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
+  background: ${({theme}) => theme.colors["gray-700"]};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+
+  border: 0;
+  color: ${({theme}) => theme.colors["gray-300"]};
+
+  svg{
+    color: ${({theme, variant}) => theme.colors[`${variant}`]};
+  }
+`;
+
+export { 
+  ModalOverlay, 
+  ModalContent, 
+  ModalTitle, 
+  CloseButton, 
+  ModalForm, 
+  TransactionTypeContainer,
+  TransactionTypeButton
+};
 
