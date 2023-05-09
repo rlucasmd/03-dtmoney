@@ -1,8 +1,42 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { CloseButton, ModalContent, ModalOverlay, ModalTitle, ModalForm, TransactionTypeContainer, TransactionTypeButton } from "./styles";
+import { 
+  TransactionTypeContainer, 
+  TransactionTypeButton,
+  ModalOverlay, 
+  ModalContent, 
+  CloseButton, 
+  ModalTitle, 
+  ModalForm, 
+} from "./styles";
 import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+const newTransactionFormSchema = z.object({
+  description: z.string(),
+  price: z.number(),
+  category: z.string(),
+  // type: z.enum(["income", "outcome"])
+});
+
+type newTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 function NewTransactionModal(){
+
+  const { 
+    register,
+    handleSubmit,
+    formState: { isSubmitting }
+  } = useForm<newTransactionFormInputs>({
+    resolver: zodResolver(newTransactionFormSchema)
+  });
+
+  async function handleCreateNewTransaction(data: newTransactionFormInputs){
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    console.log(data);
+  }
+
   return (
     <Dialog.Portal>
       <ModalOverlay/>
@@ -12,10 +46,25 @@ function NewTransactionModal(){
           <X size={24}/>
         </CloseButton>
 
-        <ModalForm>
-          <input type="text" placeholder="Descrição" required/>
-          <input type="text" placeholder="Preço" required/>
-          <input type="text" placeholder="Categoria" required/>
+        <ModalForm onSubmit={handleSubmit(handleCreateNewTransaction)}>
+          <input 
+            type="text" 
+            placeholder="Descrição" 
+            required
+            {...register("description")}
+          />
+          <input 
+            type="text" 
+            placeholder="Preço" 
+            required
+            {...register("price", { valueAsNumber: true })}
+          />
+          <input 
+            type="text" 
+            placeholder="Categoria" 
+            required
+            {...register("category")}
+          />
 
           <TransactionTypeContainer>
             <TransactionTypeButton 
@@ -34,7 +83,7 @@ function NewTransactionModal(){
             </TransactionTypeButton>
           </TransactionTypeContainer>
 
-          <button type="submit">
+          <button type="submit" disabled={isSubmitting}>
             Cadastrar
           </button>
         </ModalForm>

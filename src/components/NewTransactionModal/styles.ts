@@ -73,7 +73,11 @@ const ModalForm = styled.form`
 
       transition: 0.2s;
 
-      &:hover{
+      &:disabled{
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      &:not(:disabled):hover{
         background: ${({theme}) => theme.colors["green-700"]};
       }
     }
