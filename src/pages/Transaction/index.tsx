@@ -1,14 +1,13 @@
 import { Header } from "../../components/Header";
 import { Summary } from "../../components/Summary";
 import { useTransaction } from "../../hooks/useTransaction";
+import { formatDate, formatMoney } from "../../utils/formatter";
 import { SearchForm } from "./components/SearchForm";
 import { 
   PriceHighlight, 
   TransactionsContainer, 
   TransactionsTable 
 } from "./styles";
-
-
 
 function Transactions(){
 
@@ -29,11 +28,12 @@ function Transactions(){
                     <td>{transaction.description}</td>
                     <td>
                       <PriceHighlight variant={transaction.type}>
-                        {transaction.price}
+                        {transaction.type === "outcome" && "- "}
+                        {formatMoney.format(transaction.price)}
                       </PriceHighlight>
                     </td>
                     <td>{transaction.category}</td>
-                    <td>{transaction.createdAt}</td>
+                    <td>{formatDate.format(new Date(transaction.createdAt))}</td>
                   </tr>
                 )
               )
