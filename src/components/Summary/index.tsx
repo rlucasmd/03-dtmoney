@@ -2,9 +2,25 @@ import { useTheme } from "styled-components";
 import { RegularText, TitleText } from "../Typography";
 import { SummaryCard, SummaryContainer } from "./styles";
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
+import { useTransaction } from "../../hooks/useTransaction";
+import { formatMoney } from "../../utils/formatter";
 
 function Summary(){
   const { colors } = useTheme();
+  const { transactions } = useTransaction();
+
+  const summary = transactions.reduce((accumulator, {type, price}) => {
+    if(type === "income"){
+      accumulator["income"] += price;
+      accumulator["total"] += price;
+    }
+    if(type === "outcome"){
+      accumulator["outcome"] += price;
+      accumulator["total"] -= price;
+    }
+    return accumulator;
+  }, {income: 0, outcome: 0, total: 0});
+
   return (
     <SummaryContainer>
       <SummaryCard>
@@ -18,7 +34,7 @@ function Summary(){
           />
         </header>
         <TitleText>
-          R$ 17.000,00
+          {formatMoney.format(summary.income)}
         </TitleText>
       </SummaryCard>
       <SummaryCard>
@@ -32,7 +48,7 @@ function Summary(){
           />
         </header>
         <TitleText>
-          R$ 17.000,00
+          {formatMoney.format(summary.outcome)}
         </TitleText>
       </SummaryCard>
       <SummaryCard variant="green">
@@ -46,7 +62,7 @@ function Summary(){
           />
         </header>
         <TitleText>
-          R$ 17.000,00
+          {formatMoney.format(summary.total)}  
         </TitleText>
       </SummaryCard>
     </SummaryContainer>
