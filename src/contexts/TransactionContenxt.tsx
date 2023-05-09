@@ -14,26 +14,28 @@ type TransactionsContextProvider = {
 }
 
 type TransactionContextType = {
-  transactions: TransactionType[]
+  transactions: TransactionType[];
+  fetchTransactions: () => Promise<void>;
 }
 
 const TransactionsContext = createContext({} as TransactionContextType);
 
-function TransactionsContextProvider({children} : TransactionsContextProvider){
+function TransactionsContextProvider({ children }: TransactionsContextProvider) {
   const [transactions, setTransactions] = useState<TransactionType[]>([]);
 
-  async function loadTransactions(){
+  async function fetchTransactions(query?: string) {
     const response = await fetch("http://localhost:3000/transactions");
     const data = await response.json();
     setTransactions(data);
   }
 
   useEffect(() => {
-    loadTransactions();
-  },[]);
-  return(
+    fetchTransactions();
+  }, []);
+  return (
     <TransactionsContext.Provider value={{
-      transactions
+      transactions,
+      fetchTransactions
     }}>
       {children}
     </TransactionsContext.Provider>

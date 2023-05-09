@@ -1,18 +1,18 @@
-import { useTransaction } from "../hooks/useTransaction";
+import { useTransaction } from "./useTransaction";
 
-function useSummary(){
+function useSummary() {
   const { transactions } = useTransaction();
-  const summary = transactions.reduce((accumulator, {type, price}) => {
-    if(type === "income"){
+  const summary = transactions.reduce((accumulator, { type, price }) => {
+    if (type === "income") {
       accumulator["income"] += price;
       accumulator["total"] += price;
     }
-    if(type === "outcome"){
+    if (type === "outcome") {
       accumulator["outcome"] += price;
       accumulator["total"] -= price;
     }
     return accumulator;
-  }, {income: 0, outcome: 0, total: 0});
+  }, { income: 0, outcome: 0, total: 0 });
   return { summary };
 }
 

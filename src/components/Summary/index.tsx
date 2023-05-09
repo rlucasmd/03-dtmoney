@@ -2,11 +2,10 @@ import { useTheme } from "styled-components";
 import { RegularText, TitleText } from "../Typography";
 import { SummaryCard, SummaryContainer } from "./styles";
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
-import { useTransaction } from "../../hooks/useTransaction";
 import { formatMoney } from "../../utils/formatter";
-import { useSummary } from "../../contexts/useSummary";
+import { useSummary } from "../../hooks/useSummary";
 
-function Summary(){
+function Summary() {
   const { colors } = useTheme();
   const { summary } = useSummary();
   return (
@@ -16,8 +15,8 @@ function Summary(){
           <RegularText>
             Entradas
           </RegularText>
-          <ArrowCircleUp 
-            size={32} 
+          <ArrowCircleUp
+            size={32}
             color={colors["green-300"]}
           />
         </header>
@@ -30,8 +29,8 @@ function Summary(){
           <RegularText>
             Saídas
           </RegularText>
-          <ArrowCircleDown 
-            size={32} 
+          <ArrowCircleDown
+            size={32}
             color={colors["red-300"]}
           />
         </header>
@@ -44,13 +43,13 @@ function Summary(){
           <RegularText>
             Total
           </RegularText>
-          <CurrencyDollar 
-            size={32} 
+          <CurrencyDollar
+            size={32}
             color={colors.white}
           />
         </header>
         <TitleText>
-          {formatMoney.format(summary.total)}  
+          {formatMoney.format(summary.total)}
         </TitleText>
       </SummaryCard>
     </SummaryContainer>
