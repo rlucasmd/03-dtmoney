@@ -6,7 +6,7 @@
       "type": "income",
       "category": "venda",
       "price": 1400,
-      "createdAt": "2023-05-07T20:35:43.680Z" 
+      "createdAt": "2023-05-07T20:35:43.680Z"
     },
     {
       "id": 2,
@@ -14,7 +14,23 @@
       "type": "outcome",
       "category": "alimentação",
       "price": 40,
-      "createdAt": "2023-05-07T20:35:43.680Z" 
+      "createdAt": "2023-05-07T20:35:43.680Z"
+    },
+    {
+      "category": "Alimentação",
+      "description": "Iorgute de banana",
+      "price": 4,
+      "type": "outcome",
+      "createdAt": "2023-05-10T01:34:47.102Z",
+      "id": 3
+    },
+    {
+      "category": "Venda",
+      "description": "Venda de bicicleta",
+      "price": 800,
+      "type": "income",
+      "createdAt": "2023-05-10T01:35:33.016Z",
+      "id": 4
     }
   ]
 }
